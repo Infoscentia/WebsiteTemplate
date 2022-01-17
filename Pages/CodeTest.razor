@@ -1,0 +1,11 @@
+﻿@page "/codetest"
+
+<PageTitle>codetest</PageTitle>
+
+<MudButton Variant="Variant.Outlined" OnClick="ButtonPressed">@countvalue</MudButton>
+
+@code {
+    int countvalue = 0;
+
+    void ButtonPressed(){ countvalue++; }
+}

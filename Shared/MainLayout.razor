@@ -1,0 +1,107 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="2" Color="Color.Transparent" >
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudButtonGroup Color="Color.Surface" Variant="Variant.Text">
+            <MudButton>One</MudButton>
+            <MudButton>Two</MudButton>
+            <MudButton>Three</MudButton>
+            <MudButton>Four</MudButton>
+            <MudHidden Breakpoint="Breakpoint.SmAndUp" Invert="true">
+                <MudButton>Five</MudButton>
+                <MudButton>Six</MudButton>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                <MudButton>Seven</MudButton>
+                <MudButton>Eight</MudButton>
+                <MudButton>Nine</MudButton>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="false">
+                <MudMenu ActivationEvent="@MouseEvent.MouseOver" Color="Color.Dark">
+                    <ActivatorContent>
+                        <MudButton EndIcon="@Icons.Sharp.ArrowDropDown">More</MudButton>
+                    </ActivatorContent>
+                    <ChildContent>
+                         <MudHidden Breakpoint="Breakpoint.SmAndUp" Invert="false">
+                            <MudMenuItem>Five</MudMenuItem>
+                            <MudMenuItem>Six</MudMenuItem>
+                        </MudHidden>
+                        <MudMenuItem>Seven</MudMenuItem>
+                        <MudMenuItem>Eight</MudMenuItem>
+                        <MudMenuItem>Nine</MudMenuItem>
+                    </ChildContent>
+                </MudMenu>
+            </MudHidden>
+        </MudButtonGroup>
+        <MudSpacer />
+        <MudBadge Dot="true" Overlap="true" Color="Color.Warning" Class="mx-0 my-0">
+            <MudIconButton OnClick="@ToggleDrawer" Icon="@Icons.Sharp.ShoppingCart" Color="Color.Inherit"/>
+        </MudBadge>
+        <MudMenu Icon="@Icons.Sharp.Person" Color="Color.Inherit" AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.TopRight">
+            <MudMenuItem>Sign In</MudMenuItem>
+            <MudMenuItem>Something else</MudMenuItem>
+        </MudMenu>
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="1">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h6">MudBlazorTemplates1</MudText>
+        </MudDrawerHeader>
+        <NavMenu />
+    </MudDrawer>
+    <MudDrawer  @bind-Open="@open" Anchor="Anchor.End" Elevation="8" Width="250px" ClipMode="DrawerClipMode.Always" Color="Color.Surface">
+        <MudCard Class="ma-2">
+            <MudCardHeader>
+                <MudText Typo="Typo.h6">LoremIpsum</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Rounded.Watch" Color="Color.Primary">Read More</MudButton>
+            </MudCardActions>
+        </MudCard>
+        <MudCard Class="ma-2">
+            <MudCardHeader>
+                <MudText Typo="Typo.h6">LoremIpsum</MudText>
+            </MudCardHeader>
+            <MudCardContent>
+                <MudText>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</MudText>
+            </MudCardContent>
+            <MudCardActions>
+                <MudButton Variant="Variant.Text" StartIcon="@Icons.Material.Rounded.Watch" Color="Color.Primary">Read More</MudButton>
+            </MudCardActions>
+        </MudCard>
+@*        <MudNavMenu Class="pa-2">
+            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.Dashboard" IconColor="Color.Inherit">Dashboard</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.LocalLibrary" IconColor="Color.Inherit">Library</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.People" IconColor="Color.Inherit">Community</MudNavLink>
+        </MudNavMenu>*@
+    </MudDrawer>
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large" Class="my-6 pt-8">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+    bool open = false;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+
+
+}

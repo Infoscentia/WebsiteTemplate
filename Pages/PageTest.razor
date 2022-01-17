@@ -1,0 +1,43 @@
+﻿@page "/pagetest"
+
+<PageTitle>Pagetest</PageTitle>
+
+<MudCarousel Class="mud-width-full" Style="height:800px;"TData="object">
+    <MudCarouselItem Color="@Color.Primary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Sharp.ManageSearch" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Color="@Color.Secondary">
+        <div class="d-flex" style="height:100%">
+            <MudIcon Class="mx-auto my-auto" Icon="@Icons.Sharp.Cabin" Size="@Size.Large" />
+        </div>
+    </MudCarouselItem>
+    <MudCarouselItem Color="@Color.Tertiary">
+        <MudDrawerContainer Class="mud-height-full">
+            <MudDrawer @bind-Open="@open" Elevation="0" Variant="@DrawerVariant.Persistent" Color="Color.Dark">
+                <MudDrawerHeader>
+                    <MudText Typo="Typo.h6">My App</MudText>
+                </MudDrawerHeader>
+                <MudNavMenu>
+                    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.Dashboard" IconColor="Color.Inherit">Dashboard</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.LocalLibrary" IconColor="Color.Inherit">Library</MudNavLink>
+                    <MudNavLink Match="NavLinkMatch.All" Icon="@Icons.Filled.People" IconColor="Color.Inherit">Community</MudNavLink>
+                </MudNavMenu>
+            </MudDrawer>
+            <div class="d-flex justify-center align-center mud-height-full">
+                <MudButton Variant="Variant.Filled" Color="Color.Inherit" OnClick="@ToggleDrawer">Persistent drawer</MudButton>
+            </div>
+        </MudDrawerContainer>        
+    </MudCarouselItem>
+</MudCarousel>
+
+
+@code {
+    bool open = false;
+
+    void ToggleDrawer()
+    {
+        open = !open;
+    }
+}
