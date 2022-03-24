@@ -1,0 +1,31 @@
+﻿<MudButtonGroup Variant="Variant.Text">
+            <MudButton>One</MudButton>
+            <MudButton>Two</MudButton>
+            <MudButton>Three</MudButton>
+            <MudButton>Four</MudButton>
+            <MudHidden Breakpoint="Breakpoint.SmAndUp" Invert="true">
+                <MudButton>Five</MudButton>
+                <MudButton>Six</MudButton>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="true">
+                <MudButton>Seven</MudButton>
+                <MudButton>Eight</MudButton>
+                <MudButton>Nine</MudButton>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.MdAndUp" Invert="false">
+                <MudMenu ActivationEvent="@MouseEvent.MouseOver" Color="Color.Dark">
+                    <ActivatorContent>
+                        <MudButton EndIcon="@Icons.Sharp.ArrowDropDown">More</MudButton>
+                    </ActivatorContent>
+                    <ChildContent>
+                         <MudHidden Breakpoint="Breakpoint.SmAndUp" Invert="false">
+                            <MudMenuItem>Five</MudMenuItem>
+                            <MudMenuItem>Six</MudMenuItem>
+                        </MudHidden>
+                        <MudMenuItem>Seven</MudMenuItem>
+                        <MudMenuItem>Eight</MudMenuItem>
+                        <MudMenuItem>Nine</MudMenuItem>
+                    </ChildContent>
+                </MudMenu>
+            </MudHidden>
+        </MudButtonGroup>

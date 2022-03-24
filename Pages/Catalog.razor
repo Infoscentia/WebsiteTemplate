@@ -1,0 +1,67 @@
+﻿@page "/catalog"
+
+<PageTitle>Catalog</PageTitle>
+
+<MudGrid>
+    @foreach(stockItem item in catalogItems)
+    {
+        <MudItem xs="12" sm="6" lg="4">
+            <MudCard style="height:100%" Class="pa-2">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h5" Align="Align.Left"><b>@item.Name</b></MudText>
+                    <MudSpacer />
+                    <MudText Typo="Typo.h6" Align="Align.Right">£@item.Price</MudText>
+                </MudCardHeader>
+                <MudCardMedia Image="@item.ImageReference" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">@item.Description</MudText>
+                </MudCardContent>
+                <MudCardActions Class="align-self-baseline">
+                    <MudSpacer />
+                    <MudButton StartIcon="@Icons.Sharp.ShoppingCart">Add to cart</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    }
+    @for(int i=0; i<7; i++)
+    {
+        <MudItem xs="12" sm="6" lg="4">
+            <MudCard style="height:100%" Class="pa-2">
+                <MudCardHeader>
+                    <MudText Typo="Typo.h5" Align="Align.Left"><b>Potato</b></MudText>
+                    <MudSpacer />
+                    <MudText Typo="Typo.h6" Align="Align.Right">£89.99</MudText>
+                </MudCardHeader>
+                <MudCardMedia Image="images/potato.jpg" Height="250" />
+                <MudCardContent>
+                    <MudText Typo="Typo.body2">Wow a lovely potato. Boil 'em, mash 'em, stick 'em in a stew.</MudText>
+                </MudCardContent>
+                <MudCardActions Class="d-flex align-baseline">
+                    <MudSpacer />
+                    <MudButton StartIcon="@Icons.Sharp.ShoppingCart">Add to cart</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
+
+@code {
+
+
+
+    public class stockItem
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string ImageReference { get; set; } = "images/potato.jpg";
+        public decimal Price { get; set; }
+    }
+
+    List<stockItem> catalogItems = new List<stockItem>
+    {
+        new stockItem{Name="potato", Description="yummy", Price=23.90M},
+        new stockItem{Name="tomato", Description="delicious  very long description blah blah blah tomato sdfsdfhyshdhfi sdfnuisdnfnsidn sduinfiusdnfuindufn sdnfiusdnfuins un \n wow wow ombelibabale", ImageReference="images/tomato.jpg", Price=29.99M}
+    };
+
+}
